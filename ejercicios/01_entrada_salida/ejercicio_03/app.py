@@ -32,10 +32,11 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
+        self.txt_nombre.focus()
+        
     def btn_mostrar_on_click(self):
-        pass
-                
+        Nombre = self.txt_nombre.get()
+        alert("Ej 3", self.txt_nombre.get())        
     
 if __name__ == "__main__":
     app = App()
