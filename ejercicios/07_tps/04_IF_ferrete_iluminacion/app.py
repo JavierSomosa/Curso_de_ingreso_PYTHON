@@ -45,35 +45,59 @@ class App(customtkinter.CTk):
 
         CantidadDeLamparitas = int(CantidadDeLamparitas)
 
-        if(CantidadDeLamparitas > 5):
-            descuento = 0.50
-        else:
-            if(CantidadDeLamparitas == 5 and MarcaDeLamparita == "ArgentinaLuz"):
-                descuento = 0.60
-            else:    
-                descuento = 0.70
+        #if(CantidadDeLamparitas > 5):
+            #descuento = 0.5
+        #else:
+            #if(CantidadDeLamparitas == 5 and MarcaDeLamparita == "ArgentinaLuz"):
+             #   descuento = 0.4
+            #else:    
+                #descuento = 0.3
 
-                if(CantidadDeLamparitas == 4):
-                    if(MarcaDeLamparita == "ArgentinaLuz" or MarcaDeLamparita == "FelipeLamparas"):
-                        descuento = 0.75
-                    else:
-                        descuento = 0.80
-                else:        
-                    if(CantidadDeLamparitas == 3 and MarcaDeLamparita == "ArgentinaLuz"):
-                        descuento = 0.85
-                    else:
-                    
-                        if(MarcaDeLamparita == "FelipeLamparas"):
-                            descuento = 0.90
-                        else:
-                            descuento = 0.95
+                #if(CantidadDeLamparitas == 4):
+                    #if(MarcaDeLamparita == "ArgentinaLuz" or MarcaDeLamparita == "FelipeLamparas"):
+                   #     descuento = 0.25
+                 #   else:
+                  #      descuento = 0.2
+                #else:        
+                    #if(CantidadDeLamparitas == 3 and MarcaDeLamparita == "ArgentinaLuz"):
+                     #   descuento = 0.15
+                    #else:
+                        #if(MarcaDeLamparita == "FelipeLamparas"):
+                        #    descuento = 0.1
+                        #else:
+                            #descuento = 0.05 
+
+        match CantidadDeLamparitas:
+            case 5:
+                if (MarcaDeLamparita == "ArgentinaLuz"):
+                    descuento = 0.4
+                else:
+                    descuento = 0.3
+            case 4:
+                if(MarcaDeLamparita == "ArgentinaLuz" or MarcaDeLamparita == "FelipeLamparas"):
+                    descuento = 0.25
+                else:
+                    descuento = 0.2
+            case 3:
+                if(MarcaDeLamparita == "ArgentinaLuz"):
+                    descuento = 0.15
+                elif (MarcaDeLamparita == "FelipeLamparas"):
+                    descuento = 0.1
+                else:
+                    descuento = 0.05
+            case _:
+                if(CantidadDeLamparitas > 5):
+                    descuento = 0.5
+                else:
+                    descuento = 0
+                
                                     
             
         PrecioSinDescuento = PrecioBaseDeLasLamparas * CantidadDeLamparitas
-        PrecioConDescuento = PrecioSinDescuento * descuento
+        PrecioConDescuento = PrecioSinDescuento - (PrecioSinDescuento * descuento)
 
         if(PrecioConDescuento > 4000):
-            PrecioConDescuento = PrecioConDescuento * 0.95
+            PrecioConDescuento = PrecioConDescuento * 0.05
 
         alert("titulo",f"El precio de las lamparitas es: {PrecioConDescuento}")
         
